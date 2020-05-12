@@ -33,7 +33,7 @@ First, find Tensorflow include and library paths.
 
         TF_INC=$(python -c 'import tensorflow as tf; print(tf.sysconfig.get_include())')
         TF_LIB=$(python -c 'import tensorflow as tf; print(tf.sysconfig.get_lib())')
-        
+
 Then, add flags of `-I$TF_INC/external/nsync/public -L$TF_LIB -ltensorflow_framework` to the `g++` commands.
 
 ### Usage
@@ -54,7 +54,7 @@ If you have multiple GPUs on your machine, you can also run the multi-GPU versio
 
 After training, to evaluate the classification accuracies (with optional multi-angle voting):
 
-        python evaluate.py --num_votes 12 
+        python evaluate.py --num_votes 12
 
 <i>Side Note:</i> For the XYZ+normal experiment reported in our paper: (1) 5000 points are used and (2) a further random data dropout augmentation is used during training (see commented line after `augment_batch_data` in `train.py` and (3) the model architecture is updated such that the `nsample=128` in the first two set abstraction levels, which is suited for the larger point density in 5000-point samplings.
 
