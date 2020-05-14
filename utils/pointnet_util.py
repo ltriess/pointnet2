@@ -12,17 +12,18 @@ import sys
 
 import numpy as np
 import tensorflow as tf
-import tf_util
-from tf_grouping import group_point, knn_point, query_ball_point
-from tf_interpolate import three_interpolate, three_nn
-from tf_sampling import farthest_point_sample, gather_point
+from utils import tf_util
+
+from tf_ops.grouping import group_point, knn_point, query_ball_point
+from tf_ops.sampling import farthest_point_sample, gather_point
+from tf_ops.interpolation_3d import three_nn, three_interpolate
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(BASE_DIR)
 sys.path.append(os.path.join(ROOT_DIR, "utils"))
 sys.path.append(os.path.join(ROOT_DIR, "tf_ops/sampling"))
 sys.path.append(os.path.join(ROOT_DIR, "tf_ops/grouping"))
-sys.path.append(os.path.join(ROOT_DIR, "tf_ops/3d_interpolation"))
+sys.path.append(os.path.join(ROOT_DIR, "tf_ops/interpolation_3d"))
 
 
 def sample_and_group(npoint, radius, nsample, xyz, points, knn=False, use_xyz=True):
