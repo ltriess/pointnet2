@@ -7,5 +7,4 @@ TF_LFLAGS=( $(python -c 'import tensorflow as tf; print(" ".join(tf.sysconfig.ge
 # TF_CFLAGS: -I/path/to/venv/lib/python3.6/site-packages/tensorflow_core/include -D_GLIBCXX_USE_CXX11_ABI=0
 # TF_LFLAGS: -L/path/to/venv/lib/python3.6/site-packages/tensorflow_core -l:libtensorflow_framework.so.1
 
-/usr/local/cuda/bin/nvcc -std=c++11 -c -o tf_sampling_g.cu.o tf_sampling_g.cu ${TF_CFLAGS[@]} -D GOOGLE_CUDA=1 -x cu -Xcompiler -fPIC
-g++ -std=c++11 -shared -o tf_sampling_so.so tf_sampling.cpp tf_sampling_g.cu.o ${TF_CFLAGS[@]} -fPIC -lcudart ${TF_LFLAGS[@]} -I/usr/local/cuda/include -L/usr/local/cuda/lib64
+g++ -std=c++11 -shared tf_interpolate.cpp -o tf_interpolate_so.so ${TF_CFLAGS[@]} -fPIC -lcudart ${TF_LFLAGS[@]} -L/usr/local/cuda/lib64

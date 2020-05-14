@@ -139,3 +139,4 @@ void groupPointGradLauncher(int b, int n, int c, int m, int nsample, const float
     //group_point_grad_gpu<<<1,1>>>(b,n,c,m,nsample,grad_out,idx,grad_points);
     //cudaDeviceSynchronize();
 }
+
